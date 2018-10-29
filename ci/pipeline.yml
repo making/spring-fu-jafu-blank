@@ -146,7 +146,53 @@ jobs:
       put: slack-alert
       params:
         <<: *SLACK_FAILURE
+- name: generate-project
+  plan:
+  - aggregate:
+    - get: repo
+      resource: repo-develop
+      trigger: true
+      passed:
+      - upload-to-sonatype-snapshots
+    - get: repo-version
+  - task: mvn-test
+    params:
+      <<: *JAVA_OPS
+    config:
+      platform: linux
+      image_resource:
+        type: docker-image
+        source:
+          repository: maven
+      inputs:
+      - name: repo
+      - name: repo-version
+      caches:
+      - path: repo/m2
+      run:
+        path: bash
+        args:
+        - -c
+        - |
+          set -e
+          VERSION=`cat repo-version/number`-SNAPSHOT
 
+          mvn org.apache.maven.plugins:maven-archetype-plugin:2.4:generate \
+          -U \
+          -DarchetypeGroupId=am.ik.archetype \
+          -DarchetypeRepository=https://oss.sonatype.org/content/repositories/snapshots \
+          -DarchetypeArtifactId=spring-fu-jafu-blank-archetype \
+          -DarchetypeVersion=${VERSION} \
+          -DgroupId=abc.def \
+          -DartifactId=demoapp \
+          -Dversion=1.0.0-SNAPSHOT \
+          -B
+          cd demoapp
+          mvn package
+    on_failure:
+      put: slack-alert
+      params:
+        <<: *SLACK_FAILURE
 ### Prod
 - name: merge-develop-to-master
   plan:
@@ -154,7 +200,7 @@ jobs:
     - get: repo-src
       resource: repo-develop
       passed:
-      - upload-to-sonatype-snapshots
+      - generate-project
     - get: repo-dest
       resource: repo-master
   - task: merge-develop-to-master
