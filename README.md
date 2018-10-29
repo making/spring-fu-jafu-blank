@@ -10,7 +10,7 @@ Maven archetype to create a pre-configured maven project for [Spring Fu](https:/
 mvn archetype:generate\
  -DarchetypeGroupId=am.ik.archetype\
  -DarchetypeArtifactId=spring-fu-jafu-blank-archetype\
- -DarchetypeVersion=0.0.1
+ -DarchetypeVersion=0.0.2
 ```
 
 ### Example
@@ -19,7 +19,7 @@ mvn archetype:generate\
 $ mvn archetype:generate\
  -DarchetypeGroupId=am.ik.archetype\
  -DarchetypeArtifactId=spring-fu-jafu-blank-archetype\
- -DarchetypeVersion=0.0.1\
+ -DarchetypeVersion=0.0.2\
  -DgroupId=com.example\
  -DartifactId=demo-fu\
  -Dversion=1.0.0-SNAPSHOT\
@@ -40,12 +40,12 @@ $ mvn archetype:generate\
 [INFO] Generating project in Batch mode
 [WARNING] Archetype not found in any catalog. Falling back to central repository.
 [WARNING] Add a repsoitory with id 'archetype' in your settings.xml if archetype's repository is elsewhere.
-[INFO] Downloading from central: https://repo.maven.apache.org/maven2/am/ik/archetype/spring-fu-jafu-blank-archetype/0.0.1/spring-fu-jafu-blank-archetype-0.0.1.pom
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/am/ik/archetype/spring-fu-jafu-blank-archetype/0.0.1/spring-fu-jafu-blank-archetype-0.0.1.pom (2.6 kB at 4.9 kB/s)
-[INFO] Downloading from central: https://repo.maven.apache.org/maven2/am/ik/archetype/spring-fu-jafu-blank-archetype/0.0.1/spring-fu-jafu-blank-archetype-0.0.1.jar
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/am/ik/archetype/spring-fu-jafu-blank-archetype/0.0.1/spring-fu-jafu-blank-archetype-0.0.1.jar (5.7 kB at 12 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/am/ik/archetype/spring-fu-jafu-blank-archetype/0.0.2/spring-fu-jafu-blank-archetype-0.0.2.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/am/ik/archetype/spring-fu-jafu-blank-archetype/0.0.2/spring-fu-jafu-blank-archetype-0.0.2.pom (2.6 kB at 6.1 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/am/ik/archetype/spring-fu-jafu-blank-archetype/0.0.2/spring-fu-jafu-blank-archetype-0.0.2.jar
+Downloaded from central: https://repo.maven.apache.org/maven2/am/ik/archetype/spring-fu-jafu-blank-archetype/0.0.2/spring-fu-jafu-blank-archetype-0.0.2.jar (5.8 kB at 15 kB/s)
 [INFO] ----------------------------------------------------------------------------
-[INFO] Using following parameters for creating project from Archetype: spring-fu-jafu-blank-archetype:0.0.1
+[INFO] Using following parameters for creating project from Archetype: spring-fu-jafu-blank-archetype:0.0.2
 [INFO] ----------------------------------------------------------------------------
 [INFO] Parameter: groupId, Value: com.example
 [INFO] Parameter: artifactId, Value: demo-fu
@@ -130,7 +130,6 @@ $ mvn dependency:list | grep ':compile' | sort
 [INFO]    com.fasterxml.jackson.datatype:jackson-datatype-jdk8:jar:2.9.7:compile -- module com.fasterxml.jackson.datatype.jdk8 [auto]
 [INFO]    com.fasterxml.jackson.datatype:jackson-datatype-jsr310:jar:2.9.7:compile -- module com.fasterxml.jackson.datatype.jsr310 [auto]
 [INFO]    com.fasterxml.jackson.module:jackson-module-parameter-names:jar:2.9.7:compile -- module com.fasterxml.jackson.module.paramnames [auto]
-[INFO]    com.fasterxml:classmate:jar:1.4.0:compile -- module com.fasterxml.classmate [auto]
 [INFO]    io.netty:netty-buffer:jar:4.1.29.Final:compile -- module io.netty.buffer [auto]
 [INFO]    io.netty:netty-codec-http2:jar:4.1.29.Final:compile -- module io.netty.codec.http2 [auto]
 [INFO]    io.netty:netty-codec-http:jar:4.1.29.Final:compile -- module io.netty.codec.http [auto]
@@ -145,12 +144,8 @@ $ mvn dependency:list | grep ':compile' | sort
 [INFO]    io.netty:netty-transport:jar:4.1.29.Final:compile -- module io.netty.transport [auto]
 [INFO]    io.projectreactor.netty:reactor-netty:jar:0.8.1.RELEASE:compile -- module reactor.netty (auto)
 [INFO]    io.projectreactor:reactor-core:jar:3.2.1.RELEASE:compile -- module reactor.core (auto)
-[INFO]    javax.annotation:javax.annotation-api:jar:1.3.2:compile -- module java.annotation [auto]
-[INFO]    javax.validation:validation-api:jar:2.0.1.Final:compile -- module java.validation [auto]
 [INFO]    org.apache.logging.log4j:log4j-api:jar:2.11.1:compile -- module org.apache.logging.log4j
 [INFO]    org.apache.logging.log4j:log4j-to-slf4j:jar:2.11.1:compile -- module org.apache.logging.slf4j [auto]
-[INFO]    org.hibernate.validator:hibernate-validator:jar:6.0.13.Final:compile -- module org.hibernate.validator [auto]
-[INFO]    org.jboss.logging:jboss-logging:jar:3.3.2.Final:compile -- module org.jboss.logging [auto]
 [INFO]    org.reactivestreams:reactive-streams:jar:1.0.2:compile -- module org.reactivestreams [auto]
 [INFO]    org.slf4j:jul-to-slf4j:jar:1.7.25:compile -- module jul.to.slf4j (auto)
 [INFO]    org.slf4j:slf4j-api:jar:1.7.25:compile -- module slf4j.api (auto)
