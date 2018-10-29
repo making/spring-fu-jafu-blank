@@ -1,31 +1,16 @@
-# Vanilla Spring WebFlux.fn Blank
+# Spring Fu (Jafu) Blank project
 
-Maven archetype to create a pre-configured maven project for Vanilla Spring WebFlux.fn Application.
-
-This app uses neither Spring Boot nor DI container (!!).
-
-Only [Router Function](https://docs.spring.io/spring-framework/docs/5.0.x/spring-framework-reference/web-reactive.html#webflux-fn) is used.
+Maven archetype to create a pre-configured maven project for [Spring Fu](https://github.com/spring-projects/spring-fu) (Jafu).
 
 ## Create a blank project using maven archetype
 
 ### How to use
 
-#### Use Spring 5.0.x
-
 ```
 mvn archetype:generate\
  -DarchetypeGroupId=am.ik.archetype\
- -DarchetypeArtifactId=vanilla-spring-webflux-fn-blank-archetype\
- -DarchetypeVersion=0.0.8
-```
-
-#### Use Spring 5.1.x
-
-```
-mvn archetype:generate\
- -DarchetypeGroupId=am.ik.archetype\
- -DarchetypeArtifactId=vanilla-spring-webflux-fn-blank-archetype\
- -DarchetypeVersion=0.1.1
+ -DarchetypeArtifactId=spring-fu-jafu-blank-archetype\
+ -DarchetypeVersion=0.0.1
 ```
 
 ### Example
@@ -33,10 +18,10 @@ mvn archetype:generate\
 ```
 $ mvn archetype:generate\
  -DarchetypeGroupId=am.ik.archetype\
- -DarchetypeArtifactId=vanilla-spring-webflux-fn-blank-archetype\
- -DarchetypeVersion=0.1.1\
+ -DarchetypeArtifactId=spring-fu-jafu-blank-archetype\
+ -DarchetypeVersion=0.0.1\
  -DgroupId=com.example\
- -DartifactId=demo-fluxfn\
+ -DartifactId=demo-fu\
  -Dversion=1.0.0-SNAPSHOT\
  -B
 
@@ -53,34 +38,35 @@ $ mvn archetype:generate\
 [INFO] 
 [INFO] --- maven-archetype-plugin:3.0.1:generate (default-cli) @ standalone-pom ---
 [INFO] Generating project in Batch mode
-[INFO] Archetype repository not defined. Using the one from [am.ik.archetype:vanilla-spring-webflux-fn-blank-archetype:0.1.1] found in catalog remote
-[INFO] Downloading from central: https://repo.maven.apache.org/maven2/am/ik/archetype/vanilla-spring-webflux-fn-blank-archetype/0.1.1/vanilla-spring-webflux-fn-blank-archetype-0.1.1.pom
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/am/ik/archetype/vanilla-spring-webflux-fn-blank-archetype/0.1.1/vanilla-spring-webflux-fn-blank-archetype-0.1.1.pom (2.7 kB at 5.9 kB/s)
-[INFO] Downloading from central: https://repo.maven.apache.org/maven2/am/ik/archetype/vanilla-spring-webflux-fn-blank-archetype/0.1.1/vanilla-spring-webflux-fn-blank-archetype-0.1.1.jar
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/am/ik/archetype/vanilla-spring-webflux-fn-blank-archetype/0.1.1/vanilla-spring-webflux-fn-blank-archetype-0.1.1.jar (6.0 kB at 14 kB/s)
+[WARNING] Archetype not found in any catalog. Falling back to central repository.
+[WARNING] Add a repsoitory with id 'archetype' in your settings.xml if archetype's repository is elsewhere.
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/am/ik/archetype/spring-fu-jafu-blank-archetype/0.0.1/spring-fu-jafu-blank-archetype-0.0.1.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/am/ik/archetype/spring-fu-jafu-blank-archetype/0.0.1/spring-fu-jafu-blank-archetype-0.0.1.pom (2.6 kB at 4.9 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/am/ik/archetype/spring-fu-jafu-blank-archetype/0.0.1/spring-fu-jafu-blank-archetype-0.0.1.jar
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/am/ik/archetype/spring-fu-jafu-blank-archetype/0.0.1/spring-fu-jafu-blank-archetype-0.0.1.jar (5.7 kB at 12 kB/s)
 [INFO] ----------------------------------------------------------------------------
-[INFO] Using following parameters for creating project from Archetype: vanilla-spring-webflux-fn-blank-archetype:0.1.1
+[INFO] Using following parameters for creating project from Archetype: spring-fu-jafu-blank-archetype:0.0.1
 [INFO] ----------------------------------------------------------------------------
 [INFO] Parameter: groupId, Value: com.example
-[INFO] Parameter: artifactId, Value: demo-fluxfn
+[INFO] Parameter: artifactId, Value: demo-fu
 [INFO] Parameter: version, Value: 1.0.0-SNAPSHOT
 [INFO] Parameter: package, Value: com.example
 [INFO] Parameter: packageInPathFormat, Value: com/example
 [INFO] Parameter: package, Value: com.example
-[INFO] Parameter: version, Value: 1.0.0-SNAPSHOT
 [INFO] Parameter: groupId, Value: com.example
-[INFO] Parameter: artifactId, Value: demo-fluxfn
-[INFO] Project created from Archetype in dir: /private/tmp/demo-fluxfn
+[INFO] Parameter: artifactId, Value: demo-fu
+[INFO] Parameter: version, Value: 1.0.0-SNAPSHOT
+[INFO] Project created from Archetype in dir: /private/tmp/demo-fu
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time: 6.617 s
-[INFO] Finished at: 2018-10-04T23:25:50+09:00
-[INFO] Final Memory: 15M/218M
+[INFO] Total time: 5.583 s
+[INFO] Finished at: 2018-10-29T16:43:10+09:00
+[INFO] Final Memory: 15M/57M
 [INFO] ------------------------------------------------------------------------
 
-$ tree demo-fluxfn
-demo-fluxfn
+$ tree demo-fu
+demo-fu
 ├── pom.xml
 └── src
     ├── main
@@ -92,7 +78,7 @@ demo-fluxfn
     │   │           ├── Message.java
     │   │           └── MessageHandler.java
     │   └── resources
-    │       └── logback.xml
+    │       └── application.properties
     └── test
         └── java
             └── com
@@ -106,10 +92,24 @@ demo-fluxfn
 
 
 ```
-$ cd demo-fluxfn
+$ cd demo-fu
 $ mvn clean package
-$ java -jar target/demo-fluxfn-1.0.0-SNAPSHOT.jar 
-2018-10-04 23:27:42.880  INFO --- [           main] com.example.App                          : Started in 0.769 seconds
+$ java -jar target/demo-fu-1.0.0-SNAPSHOT.jar 
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::            (v2.1.0.RC1)
+
+2018-10-29 16:45:31.898  INFO 5448 --- [           main] o.s.boot.loader.JarLauncher              : Starting JarLauncher v1.0.0-SNAPSHOT on makinoMacBook-puro.local with PID 5448 (/private/tmp/demo-fu/target/demo-fu-1.0.0-SNAPSHOT.jar started by maki in /private/tmp/demo-fu)
+2018-10-29 16:45:31.902  INFO 5448 --- [           main] o.s.boot.loader.JarLauncher              : No active profile set, falling back to default profiles: default
+2018-10-29 16:45:32.384  WARN 5448 --- [           main] reactor.netty.tcp.TcpResources           : [http] resources will use the default LoopResources: DefaultLoopResources {prefix=reactor-http, daemon=true, selectCount=8, workerCount=8}
+2018-10-29 16:45:32.384  WARN 5448 --- [           main] reactor.netty.tcp.TcpResources           : [http] resources will use the default ConnectionProvider: PooledConnectionProvider {name=http, poolFactory=reactor.netty.resources.ConnectionProvider$$Lambda$314/0x0000000800387040@27406a17}
+2018-10-29 16:45:32.472  INFO 5448 --- [           main] o.s.b.web.embedded.netty.NettyWebServer  : Netty started on port(s): 8080
+2018-10-29 16:45:32.480  INFO 5448 --- [           main] o.s.boot.loader.JarLauncher              : Started JarLauncher in 1.025 seconds (JVM running for 1.529)
 ```
 
 ```
@@ -121,168 +121,57 @@ Following libraries will be included:
 
 ```
 $ mvn dependency:list | grep ':compile' | sort
-[INFO]    am.ik.yavi:yavi:jar:0.0.18:compile
-[INFO]    ch.qos.logback:logback-classic:jar:1.2.3:compile
-[INFO]    ch.qos.logback:logback-core:jar:1.2.3:compile
-[INFO]    com.fasterxml.jackson.core:jackson-annotations:jar:2.9.0:compile
-[INFO]    com.fasterxml.jackson.core:jackson-core:jar:2.9.7:compile
-[INFO]    com.fasterxml.jackson.core:jackson-databind:jar:2.9.7:compile
-[INFO]    io.netty:netty-buffer:jar:4.1.29.Final:compile
-[INFO]    io.netty:netty-codec-http2:jar:4.1.29.Final:compile
-[INFO]    io.netty:netty-codec-http:jar:4.1.29.Final:compile
-[INFO]    io.netty:netty-codec-socks:jar:4.1.29.Final:compile
-[INFO]    io.netty:netty-codec:jar:4.1.29.Final:compile
-[INFO]    io.netty:netty-common:jar:4.1.29.Final:compile
-[INFO]    io.netty:netty-handler-proxy:jar:4.1.29.Final:compile
-[INFO]    io.netty:netty-handler:jar:4.1.29.Final:compile
-[INFO]    io.netty:netty-resolver:jar:4.1.29.Final:compile
-[INFO]    io.netty:netty-transport-native-epoll:jar:linux-x86_64:4.1.29.Final:compile
-[INFO]    io.netty:netty-transport-native-unix-common:jar:4.1.29.Final:compile
-[INFO]    io.netty:netty-transport:jar:4.1.29.Final:compile
-[INFO]    io.projectreactor.netty:reactor-netty:jar:0.8.0.RELEASE:compile
-[INFO]    io.projectreactor:reactor-core:jar:3.2.0.RELEASE:compile
-[INFO]    org.reactivestreams:reactive-streams:jar:1.0.2:compile
-[INFO]    org.slf4j:slf4j-api:jar:1.7.25:compile
-[INFO]    org.springframework:spring-aop:jar:5.1.0.RELEASE:compile
-[INFO]    org.springframework:spring-beans:jar:5.1.0.RELEASE:compile
-[INFO]    org.springframework:spring-context:jar:5.1.0.RELEASE:compile
-[INFO]    org.springframework:spring-core:jar:5.1.0.RELEASE:compile
-[INFO]    org.springframework:spring-expression:jar:5.1.0.RELEASE:compile
-[INFO]    org.springframework:spring-jcl:jar:5.1.0.RELEASE:compile
-[INFO]    org.springframework:spring-web:jar:5.1.0.RELEASE:compile
-[INFO]    org.springframework:spring-webflux:jar:5.1.0.RELEASE:compile
-```
-
-Configure memory size as below:
-
-```
-JAVA_OPTS="-Xmx16M -Xss1M -XX:MaxMetaspaceSize=32M -XX:ReservedCodeCacheSize=32M -XX:CompressedClassSpaceSize=8M -XX:MaxDirectMemorySize=8M"
-java $JAVA_OPTS -jar target/demo-fluxfn-1.0.0-SNAPSHOT.jar
-```
-
-This will actually run.
-
-### Deploy to Cloud Foundry
-
-To make best use of small footprint, you can configure [Java Memory Calculator](https://github.com/cloudfoundry/java-buildpack-memory-calculator)
-
-Here is a example of `manifest.yml` that uses only 112Mb memory:
-
-``` yml
-applications:
-- name: fluxfn
-  buildpack: java_buildpack
-  memory: 112M
-  path: target/demo-fluxfn-1.0.0-SNAPSHOT.jar 
-  env:
-    JAVA_OPTS: '-XX:MaxMetaspaceSize=32M -XX:ReservedCodeCacheSize=32M -XX:CompressedClassSpaceSize=8M -XX:MaxDirectMemorySize=8M'
-    JBP_CONFIG_OPEN_JDK_JRE: '[memory_calculator: {stack_threads: 16}]'
-```
-
-Be careful that this configuration is well tuned for a tiny "Hello World" application.
-
-
-```
-$ mvn clean package
-$ java -jar target/demo-fluxfn-1.0.0-SNAPSHOT.jar
-$ cf push
-  Using manifest file /private/tmp/demo-fluxfn/demo-fluxfn/manifest.yml
-  
-  Updating app fluxfn in org myorg / space development as maki@example.com...
-  OK
-  
-  Uploading fluxfn...
-  Uploading app files from: /var/folders/15/fww24j3d7pg9sz196cxv_6xm4nvlh8/T/unzipped-app921204986
-  Uploading 214.5K, 78 files
-  Done uploading               
-  OK
-  
-  Starting app fluxfn in org myorg / space development as maki@example.com...
-  Downloading java_buildpack...
-  Downloaded java_buildpack
-  Creating container
-  Successfully created container
-  Downloading app package...
-  Downloaded app package (10.7M)
-  -----> Java Buildpack v4.5 (offline) | https://github.com/cloudfoundry/java-buildpack.git#ffeefb9
-  -----> Downloading Jvmkill Agent 1.10.0_RELEASE from https://java-buildpack.cloudfoundry.org/jvmkill/trusty/x86_64/jvmkill-1.10.0_RELEASE.so (found in cache)
-  -----> Downloading Open Jdk JRE 1.8.0_141 from https://java-buildpack.cloudfoundry.org/openjdk/trusty/x86_64/openjdk-1.8.0_141.tar.gz (found in cache)
-         Expanding Open Jdk JRE to .java-buildpack/open_jdk_jre (1.6s)
-  -----> Downloading Open JDK Like Memory Calculator 3.9.0_RELEASE from https://java-buildpack.cloudfoundry.org/memory-calculator/trusty/x86_64/memory-calculator-3.9.0_RELEASE.tar.gz (found in cache)
-         Loaded Classes: 12505, Threads: 16
-  -----> Downloading Client Certificate Mapper 1.2.0_RELEASE from https://java-buildpack.cloudfoundry.org/client-certificate-mapper/client-certificate-mapper-1.2.0_RELEASE.jar (found in cache)
-  -----> Downloading Container Security Provider 1.8.0_RELEASE from https://java-buildpack.cloudfoundry.org/container-security-provider/container-security-provider-1.8.0_RELEASE.jar (found in cache)
-  -----> Downloading Spring Auto Reconfiguration 1.12.0_RELEASE from https://java-buildpack.cloudfoundry.org/auto-reconfiguration/auto-reconfiguration-1.12.0_RELEASE.jar (found in cache)
-  Exit status 0
-  Uploading droplet, build artifacts cache...
-  Uploading build artifacts cache...
-  Uploading droplet...
-  Uploaded build artifacts cache (129B)
-  Uploaded droplet (57.1M)
-  Uploading complete
-  Stopping instance bce0ba8a-c5e3-4554-b893-e545801da7a8
-  Destroying container
-  Successfully destroyed container
-  
-  1 of 1 instances running
-  
-  App started
-  
-  
-  OK
-  
-  App fluxfn was started using this command `JAVA_OPTS="-agentpath:$PWD/.java-buildpack/open_jdk_jre/bin/jvmkill-1.10.0_RELEASE=printHeapHistogram=1 -Djava.io.tmpdir=$TMPDIR -Djava.ext.dirs=$PWD/.java-buildpack/container_security_provider:$PWD/.java-buildpack/open_jdk_jre/lib/ext -Djava.security.properties=$PWD/.java-buildpack/security_providers/java.security $JAVA_OPTS" && CALCULATED_MEMORY=$($PWD/.java-buildpack/open_jdk_jre/bin/java-buildpack-memory-calculator-3.9.0_RELEASE -totMemory=$MEMORY_LIMIT -stackThreads=16 -loadedClasses=13214 -poolType=metaspace -vmOptions="$JAVA_OPTS") && echo JVM Memory Configuration: $CALCULATED_MEMORY && JAVA_OPTS="$JAVA_OPTS $CALCULATED_MEMORY" && SERVER_PORT=$PORT eval exec $PWD/.java-buildpack/open_jdk_jre/bin/java $JAVA_OPTS -cp $PWD/. org.springframework.boot.loader.JarLauncher`
-  
-  Showing health and status for app fluxfn in org myorg / space development as maki@example.com...
-  OK
-  
-  requested state: started
-  instances: 1/1
-  usage: 112M x 1 instances
-  urls: fluxfn.cfapps.io
-  last uploaded: Thu Dec 21 12:05:41 UTC 2017
-  stack: cflinuxfs2
-  buildpack: java_buildpack
-  
-       state     since                    cpu    memory          disk           details
-  #0   running   2017-12-21 09:06:27 PM   0.3%   95.1M of 112M   135.7M of 1G
-```
-
-
-### How to use `ApplicationContext`
-
-``` diff
---- src/main/java/com/example/App.java	(date 1513823988000)
-+++ src/main/java/com/example/App.java	(revision )
-@@ -1,11 +1,15 @@
- package com.example;
- 
- import org.slf4j.LoggerFactory;
-+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-+import org.springframework.context.support.GenericApplicationContext;
- import org.springframework.http.server.reactive.HttpHandler;
- import org.springframework.http.server.reactive.ReactorHttpHandlerAdapter;
- import org.springframework.web.reactive.function.server.RouterFunction;
- import org.springframework.web.reactive.function.server.RouterFunctions;
- import org.springframework.web.reactive.function.server.ServerResponse;
-+import org.springframework.web.server.WebHandler;
-+import org.springframework.web.server.adapter.WebHttpHandlerBuilder;
- import reactor.core.publisher.Flux;
- import reactor.ipc.netty.http.server.HttpServer;
- 
-@@ -28,7 +32,11 @@
-                 .orElse(8080);
-         HttpServer httpServer = HttpServer.create("0.0.0.0", port);
-         httpServer.startRouterAndAwait(routes -> {
--            HttpHandler httpHandler = RouterFunctions.toHttpHandler(App.routes());
-+            GenericApplicationContext context = new AnnotationConfigApplicationContext();
-+            context.registerBean(WebHandler.class, () -> RouterFunctions.toWebHandler(App.routes()));
-+            context.refresh();
-+            context.registerShutdownHook();
-+            HttpHandler httpHandler = WebHttpHandlerBuilder.applicationContext(context).build();
-             routes.route(x -> true, new ReactorHttpHandlerAdapter(httpHandler));
-         }, context -> {
-             long elapsed = System.currentTimeMillis() - begin;
+[INFO]    am.ik.yavi:yavi:jar:0.0.18:compile -- module yavi (auto)
+[INFO]    ch.qos.logback:logback-classic:jar:1.2.3:compile -- module logback.classic (auto)
+[INFO]    ch.qos.logback:logback-core:jar:1.2.3:compile -- module logback.core (auto)
+[INFO]    com.fasterxml.jackson.core:jackson-annotations:jar:2.9.0:compile -- module jackson.annotations (auto)
+[INFO]    com.fasterxml.jackson.core:jackson-core:jar:2.9.7:compile -- module com.fasterxml.jackson.core [auto]
+[INFO]    com.fasterxml.jackson.core:jackson-databind:jar:2.9.7:compile -- module com.fasterxml.jackson.databind [auto]
+[INFO]    com.fasterxml.jackson.datatype:jackson-datatype-jdk8:jar:2.9.7:compile -- module com.fasterxml.jackson.datatype.jdk8 [auto]
+[INFO]    com.fasterxml.jackson.datatype:jackson-datatype-jsr310:jar:2.9.7:compile -- module com.fasterxml.jackson.datatype.jsr310 [auto]
+[INFO]    com.fasterxml.jackson.module:jackson-module-parameter-names:jar:2.9.7:compile -- module com.fasterxml.jackson.module.paramnames [auto]
+[INFO]    com.fasterxml:classmate:jar:1.4.0:compile -- module com.fasterxml.classmate [auto]
+[INFO]    io.netty:netty-buffer:jar:4.1.29.Final:compile -- module io.netty.buffer [auto]
+[INFO]    io.netty:netty-codec-http2:jar:4.1.29.Final:compile -- module io.netty.codec.http2 [auto]
+[INFO]    io.netty:netty-codec-http:jar:4.1.29.Final:compile -- module io.netty.codec.http [auto]
+[INFO]    io.netty:netty-codec-socks:jar:4.1.29.Final:compile -- module io.netty.codec.socks [auto]
+[INFO]    io.netty:netty-codec:jar:4.1.29.Final:compile -- module io.netty.codec [auto]
+[INFO]    io.netty:netty-common:jar:4.1.29.Final:compile -- module io.netty.common [auto]
+[INFO]    io.netty:netty-handler-proxy:jar:4.1.29.Final:compile -- module io.netty.handler.proxy [auto]
+[INFO]    io.netty:netty-handler:jar:4.1.29.Final:compile -- module io.netty.handler [auto]
+[INFO]    io.netty:netty-resolver:jar:4.1.29.Final:compile -- module io.netty.resolver [auto]
+[INFO]    io.netty:netty-transport-native-epoll:jar:linux-x86_64:4.1.29.Final:compile -- module io.netty.transport.epoll [auto]
+[INFO]    io.netty:netty-transport-native-unix-common:jar:4.1.29.Final:compile -- module io.netty.transport.unix.common [auto]
+[INFO]    io.netty:netty-transport:jar:4.1.29.Final:compile -- module io.netty.transport [auto]
+[INFO]    io.projectreactor.netty:reactor-netty:jar:0.8.1.RELEASE:compile -- module reactor.netty (auto)
+[INFO]    io.projectreactor:reactor-core:jar:3.2.1.RELEASE:compile -- module reactor.core (auto)
+[INFO]    javax.annotation:javax.annotation-api:jar:1.3.2:compile -- module java.annotation [auto]
+[INFO]    javax.validation:validation-api:jar:2.0.1.Final:compile -- module java.validation [auto]
+[INFO]    org.apache.logging.log4j:log4j-api:jar:2.11.1:compile -- module org.apache.logging.log4j
+[INFO]    org.apache.logging.log4j:log4j-to-slf4j:jar:2.11.1:compile -- module org.apache.logging.slf4j [auto]
+[INFO]    org.hibernate.validator:hibernate-validator:jar:6.0.13.Final:compile -- module org.hibernate.validator [auto]
+[INFO]    org.jboss.logging:jboss-logging:jar:3.3.2.Final:compile -- module org.jboss.logging [auto]
+[INFO]    org.reactivestreams:reactive-streams:jar:1.0.2:compile -- module org.reactivestreams [auto]
+[INFO]    org.slf4j:jul-to-slf4j:jar:1.7.25:compile -- module jul.to.slf4j (auto)
+[INFO]    org.slf4j:slf4j-api:jar:1.7.25:compile -- module slf4j.api (auto)
+[INFO]    org.springframework.boot:spring-boot-autoconfigure:jar:2.1.0.RC1:compile -- module spring.boot.autoconfigure [auto]
+[INFO]    org.springframework.boot:spring-boot-starter-json:jar:2.1.0.RC1:compile -- module spring.boot.starter.json [auto]
+[INFO]    org.springframework.boot:spring-boot-starter-logging:jar:2.1.0.RC1:compile -- module spring.boot.starter.logging [auto]
+[INFO]    org.springframework.boot:spring-boot-starter-reactor-netty:jar:2.1.0.RC1:compile -- module spring.boot.starter.reactor.netty [auto]
+[INFO]    org.springframework.boot:spring-boot-starter-webflux:jar:2.1.0.RC1:compile -- module spring.boot.starter.webflux [auto]
+[INFO]    org.springframework.boot:spring-boot-starter:jar:2.1.0.RC1:compile -- module spring.boot.starter [auto]
+[INFO]    org.springframework.boot:spring-boot:jar:2.1.0.RC1:compile -- module spring.boot [auto]
+[INFO]    org.springframework.fu:spring-fu-jafu:jar:0.0.3.BUILD-SNAPSHOT:compile -- module spring.fu.jafu (auto)
+[INFO]    org.springframework:spring-aop:jar:5.1.1.RELEASE:compile -- module spring.aop [auto]
+[INFO]    org.springframework:spring-beans:jar:5.1.1.RELEASE:compile -- module spring.beans [auto]
+[INFO]    org.springframework:spring-context:jar:5.1.1.RELEASE:compile -- module spring.context [auto]
+[INFO]    org.springframework:spring-core:jar:5.1.1.RELEASE:compile -- module spring.core [auto]
+[INFO]    org.springframework:spring-expression:jar:5.1.1.RELEASE:compile -- module spring.expression [auto]
+[INFO]    org.springframework:spring-jcl:jar:5.1.1.RELEASE:compile -- module spring.jcl [auto]
+[INFO]    org.springframework:spring-web:jar:5.1.1.RELEASE:compile -- module spring.web [auto]
+[INFO]    org.springframework:spring-webflux:jar:5.1.1.RELEASE:compile -- module spring.webflux [auto]
+[INFO]    org.synchronoss.cloud:nio-multipart-parser:jar:1.1.0:compile -- module nio.multipart.parser (auto)
+[INFO]    org.synchronoss.cloud:nio-stream-storage:jar:1.1.3:compile -- module nio.stream.storage (auto)
 ```
 
 ## License
