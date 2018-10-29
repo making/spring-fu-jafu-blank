@@ -1,38 +1,37 @@
 package xxxxxx.yyyyyy.zzzzzz;
 
-import org.slf4j.LoggerFactory;
-import org.springframework.http.server.reactive.HttpHandler;
-import org.springframework.http.server.reactive.ReactorHttpHandlerAdapter;
-import org.springframework.web.reactive.function.server.HandlerStrategies;
-import org.springframework.web.reactive.function.server.RouterFunction;
-import org.springframework.web.reactive.function.server.RouterFunctions;
-import org.springframework.web.reactive.function.server.ServerResponse;
-import reactor.netty.http.server.HttpServer;
-
-import java.time.Duration;
-import java.util.Optional;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.web.codec.CodecCustomizer;
+import org.springframework.fu.jafu.Jafu;
+import org.springframework.http.codec.ServerSentEventHttpMessageWriter;
+import org.springframework.http.codec.json.Jackson2JsonDecoder;
+import org.springframework.http.codec.json.Jackson2JsonEncoder;
+import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
 
 public class App {
-
-    static RouterFunction<ServerResponse> routes() {
-        return new HelloHandler().routes()
-                .and(new MessageHandler().routes());
-    }
-
-    public static void main(String[] args) throws Exception {
-        long begin = System.currentTimeMillis();
-        int port = Optional.ofNullable(System.getenv("PORT")) //
-                .map(Integer::parseInt) //
-                .orElse(8080);
-        HttpServer httpServer = HttpServer.create().host("0.0.0.0").port(port);
-        httpServer.route(routes -> {
-            HttpHandler httpHandler = RouterFunctions.toHttpHandler(
-                    App.routes(), HandlerStrategies.builder().build());
-            routes.route(x -> true, new ReactorHttpHandlerAdapter(httpHandler));
-        }).bindUntilJavaShutdown(Duration.ofSeconds(3), disposableServer -> {
-            long elapsed = System.currentTimeMillis() - begin;
-            LoggerFactory.getLogger(App.class).info("Started in {} seconds",
-                    elapsed / 1000.0);
+    static SpringApplication app = Jafu.application(app -> {
+        app.beans(beans -> {
+            beans.bean(HelloHandler.class);
+            beans.bean(MessageHandler.class);
+            beans.bean(ObjectMapper.class, () -> Jackson2ObjectMapperBuilder.json().build());
+            beans.bean(CodecCustomizer.class, () -> configurer -> {
+                // TODO should be provided as a part of DSL
+                ObjectMapper mapper = app.ref(ObjectMapper.class);
+                configurer.customCodecs().decoder(new Jackson2JsonDecoder(mapper));
+                Jackson2JsonEncoder encoder = new Jackson2JsonEncoder(mapper);
+                configurer.customCodecs().encoder(encoder);
+                configurer.customCodecs().writer(new ServerSentEventHttpMessageWriter(encoder));
+            });
         });
+        app.server(server -> server.router(router -> {
+            router //
+                    .add(app.ref(HelloHandler.class).routes()) //
+                    .add(app.ref(MessageHandler.class).routes());
+        }));
+    });
+
+    public static void main(String[] args) {
+        app.run(args);
     }
 }

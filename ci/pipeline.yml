@@ -10,19 +10,19 @@ resources:
   - name: repo-master
     type: git
     source:
-      uri: git@github.com:making/vanilla-spring-webflux-fn-blank.git
+      uri: git@github.com:making/spring-fu-jafu-blank.git
       branch: master
       private_key: ((github-private-key))
   - name: repo-develop
     type: git
     source:
-      uri: git@github.com:making/vanilla-spring-webflux-fn-blank.git
+      uri: git@github.com:making/spring-fu-jafu-blank.git
       branch: develop
       private_key: ((github-private-key))
   - name: repo-version
     type: semver
     source:
-      uri: git@github.com:making/vanilla-spring-webflux-fn-blank.git
+      uri: git@github.com:making/spring-fu-jafu-blank.git
       branch: version
       private_key: ((github-private-key))
       file: version
