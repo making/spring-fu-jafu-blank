@@ -3,9 +3,11 @@ package xxxxxx.yyyyyy.zzzzzz;
 import org.springframework.core.env.Profiles;
 import org.springframework.fu.jafu.ApplicationDsl;
 
+import static org.springframework.fu.jafu.ApplicationDsl.application;
+
 public class App {
 
-	static ApplicationDsl app = ApplicationDsl.application(app -> app //
+	static ApplicationDsl app = application(app -> app //
 			.beans(beans -> beans //
 					.bean(HelloHandler.class) //
 					.bean(MessageHandler.class))
